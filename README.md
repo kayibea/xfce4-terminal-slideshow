@@ -15,7 +15,7 @@ This is a simple script to change the background of xfce4-terminal to a random i
 
 ```bash
 # Run the script to change the Xfce4 Terminal background image
-if [ "$(ps -p $PPID -o comm=)" = "xfce4-terminal" ]; then
+if [ "$(ps -o comm= $PPID)" = "xfce4-terminal" ]; then
   pid_file=/tmp/xfce4-term-ss.pid
   if ! [ -e $pid_file ] || ! ps -p $(cat $pid_file) > /dev/null 2>&1; then
     nohup xfce4-term-ss > /dev/null 2>&1 &
