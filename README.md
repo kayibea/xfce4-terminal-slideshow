@@ -30,7 +30,12 @@ The execution is automatically started when you open a new terminal window. The 
 
 The script will also automatically stop when you close the last terminal window.
 
-**Note:** If you are having issues with the script, try to run it manually in a terminal window to see if there are any errors.
+**Note:** If you are having issues with the script, try to run it manually in a terminal window to see if there are any errors.à
+
+**Note:** To force the script to stop, you can run the following command:
+```bash
+kill $(cat /tmp/xfce4-term-ss.pid)
+```
 
 ## License
 
