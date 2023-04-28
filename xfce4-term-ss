@@ -1,0 +1,20 @@
+#!/bin/bash
+
+bg_refresh_rate=60 # seconds
+xfce4_term_cfg_path=~/.config/xfce4/terminal/terminalrc
+image_files=(~/Pictures/*.{jpg,png,gif})
+
+function is_xfce4_term_open () {
+    wmctrl -lx | grep -q xfce4-terminal.Xfce4-terminal
+}
+
+if [ ${#image_files[@]} -eq 0 ]; then
+    # echo "No image files found in ~/Pictures"
+    exit
+fi
+
+while is_xfce4_term_open; do
+    sleep $bg_refresh_rate
+    rand_image=${image_files[RANDOM % ${#image_files[@]}]}
+    sed -i "s|BackgroundImageFile=.*|BackgroundImageFile=$rand_image|" $xfce4_term_cfg_path
+done
